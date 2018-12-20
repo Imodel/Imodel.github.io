@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="技术,">
+  <meta name="keywords" content="spark,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。 github创建工程   工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别 hexo使用   hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录 一般使用的">
-<meta name="keywords" content="技术">
+<meta name="description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
+<meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github+hexo搭建博客">
-<meta property="og:url" content="http://modelpi.com/github+hexo搭建博客/index.html">
+<meta property="og:title" content="sparkSQL 时间和视图处理">
+<meta property="og:url" content="http://modelpi.com/sparksql time处理/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。 github创建工程   工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别 hexo使用   hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录 一般使用的">
+<meta property="og:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-20T04:29:23.147Z">
+<meta property="og:updated_time" content="2018-12-20T11:14:56.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github+hexo搭建博客">
-<meta name="twitter:description" content="终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。 github创建工程   工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别 hexo使用   hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录 一般使用的">
+<meta name="twitter:title" content="sparkSQL 时间和视图处理">
+<meta name="twitter:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/github+hexo搭建博客/">
+  <link rel="canonical" href="http://modelpi.com/sparksql time处理/">
 
 
 
 
 
-  <title>github+hexo搭建博客 | model</title>
+  <title>sparkSQL 时间和视图处理 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/github+hexo搭建博客/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/sparksql time处理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">github+hexo搭建博客</h1>
+          <h1 class="post-title" itemprop="name headline">sparkSQL 时间和视图处理</h1>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/github+hexo搭建博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="github+hexo搭建博客/" itemprop="commentCount"></span>
+                <a href="/sparksql time处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="sparksql time处理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,14 +386,19 @@
       
 
       
-        <p> 终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。</p>
-<h2 id="github创建工程"><a href="#github创建工程" class="headerlink" title="github创建工程"></a>github创建工程</h2><p>   <strong>工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别</strong></p>
-<h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   <strong>hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录</strong></p>
-<h2 id="一般使用的hexo指令"><a href="#一般使用的hexo指令" class="headerlink" title="一般使用的hexo指令"></a>一般使用的hexo指令</h2><p>hexo new  新建一篇文章</p>
-<p>hexo clean 清除缓存</p>
-<p>hexo generate 生成静态文件 可以简写成hexo g</p>
-<p>hexo deploy 部署之前生成的静态文件 简写成 hexo d</p>
-<p>我一般改写完之后，都是 hexo g -d</p>
+        <p> 上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。</p>
+<h2 id="最近30天处理"><a href="#最近30天处理" class="headerlink" title="最近30天处理"></a>最近30天处理</h2><p>在spark sql中处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_sub(now(),30) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
+<p>在mysql处理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
+<h2 id="时间相差几天"><a href="#时间相差几天" class="headerlink" title="时间相差几天"></a>时间相差几天</h2><p>在spark sql处理（和mysql一直）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datediff(start_time,end_time)&lt;1(天数)</span><br></pre></td></tr></table></figure>
+<h2 id="相差多少分钟"><a href="#相差多少分钟" class="headerlink" title="相差多少分钟"></a>相差多少分钟</h2><p>在spark sql先把两个时间转换时间戳，然后再除以60.利用<strong>unix_timestamp</strong>函数进行处理,下面是转换为秒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_timestamp(a.depart_time)-unix_timestamp(a.enter_time)</span><br></pre></td></tr></table></figure>
+<h2 id="转换为年月日"><a href="#转换为年月日" class="headerlink" title="转换为年月日"></a>转换为年月日</h2><p>在spark sql用<strong>date_format</strong>进行处理，注意想要####-##-##模式，格式一定要<strong><u>y-MM-dd</u></strong>,这样用时间排序才没有问题，如果是<u><strong>y-M-d</strong></u>，出现的日期格式，排序会有问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_FORMAT(create_time, &apos;y-MM-dd&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="spark的视图"><a href="#spark的视图" class="headerlink" title="spark的视图"></a>spark的视图</h2><p>spark的视图创建非常方面，一般使用createOrReplaceTempView方法，创建视图，比如可以这样使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark.sql(&quot;select * from </span><br><span class="line">A where deleted=0&quot;).createOrReplaceTempView(&quot;a_view&quot;)</span><br></pre></td></tr></table></figure>
+<p>利用视图可以把复杂嵌套的sql分解一个个视图，最后得到想要的结果</p>
+<p>注意：视图不能全部数字，会报错。视图如果被使用过，需要重新创建。</p>
 
       
     </div>
@@ -411,7 +416,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/spark/" rel="tag"># spark</a>
           
         </div>
       
@@ -424,15 +429,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/sparksql time处理/" rel="next" title="sparkSQL 时间和视图处理">
-                <i class="fa fa-chevron-left"></i> sparkSQL 时间和视图处理
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/github+hexo搭建博客/" rel="prev" title="github+hexo搭建博客">
+                github+hexo搭建博客 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -590,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#github创建工程"><span class="nav-number">1.</span> <span class="nav-text">github创建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo使用"><span class="nav-number">2.</span> <span class="nav-text">hexo使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一般使用的hexo指令"><span class="nav-number">3.</span> <span class="nav-text">一般使用的hexo指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最近30天处理"><span class="nav-number">1.</span> <span class="nav-text">最近30天处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间相差几天"><span class="nav-number">2.</span> <span class="nav-text">时间相差几天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相差多少分钟"><span class="nav-number">3.</span> <span class="nav-text">相差多少分钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换为年月日"><span class="nav-number">4.</span> <span class="nav-text">转换为年月日</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark的视图"><span class="nav-number">5.</span> <span class="nav-text">spark的视图</span></a></li></ol></div>
             
 
           </div>
@@ -783,9 +788,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://modelpi.com/github+hexo搭建博客/';
-          this.page.identifier = 'github+hexo搭建博客/';
-          this.page.title = 'github+hexo搭建博客';
+          this.page.url = 'http://modelpi.com/sparksql time处理/';
+          this.page.identifier = 'sparksql time处理/';
+          this.page.title = 'sparkSQL 时间和视图处理';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://xk.disqus.com/embed.js';
