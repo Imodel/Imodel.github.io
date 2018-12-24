@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="spark,">
+  <meta name="keywords" content="虚拟机,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
-<meta name="keywords" content="spark">
+<meta name="description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
+<meta name="keywords" content="虚拟机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sparkSQL 时间和视图处理">
-<meta property="og:url" content="http://modelpi.com/sparksql time处理/index.html">
+<meta property="og:title" content="垃圾回收算法">
+<meta property="og:url" content="http://modelpi.com/垃圾回收算法/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
+<meta property="og:description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-20T11:14:56.017Z">
+<meta property="og:updated_time" content="2018-12-24T12:01:54.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sparkSQL 时间和视图处理">
-<meta name="twitter:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
+<meta name="twitter:title" content="垃圾回收算法">
+<meta name="twitter:description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/sparksql time处理/">
+  <link rel="canonical" href="http://modelpi.com/垃圾回收算法/">
 
 
 
 
 
-  <title>sparkSQL 时间和视图处理 | model</title>
+  <title>垃圾回收算法 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/sparksql time处理/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/垃圾回收算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sparkSQL 时间和视图处理</h1>
+          <h1 class="post-title" itemprop="name headline">垃圾回收算法</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T12:18:30+08:00">
-                2018-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-24T20:01:30+08:00">
+                2018-12-24
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/sparksql time处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="sparksql time处理/" itemprop="commentCount"></span>
+                <a href="/垃圾回收算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="垃圾回收算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,19 +386,26 @@
       
 
       
-        <p> 上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。</p>
-<h2 id="最近30天处理"><a href="#最近30天处理" class="headerlink" title="最近30天处理"></a>最近30天处理</h2><p>在spark sql中处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_sub(now(),30) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
-<p>在mysql处理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
-<h2 id="时间相差几天"><a href="#时间相差几天" class="headerlink" title="时间相差几天"></a>时间相差几天</h2><p>在spark sql处理（和mysql一直）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datediff(start_time,end_time)&lt;1(天数)</span><br></pre></td></tr></table></figure>
-<h2 id="相差多少分钟"><a href="#相差多少分钟" class="headerlink" title="相差多少分钟"></a>相差多少分钟</h2><p>在spark sql先把两个时间转换时间戳，然后再除以60.利用<strong>unix_timestamp</strong>函数进行处理,下面是转换为秒</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_timestamp(a.depart_time)-unix_timestamp(a.enter_time)</span><br></pre></td></tr></table></figure>
-<h2 id="转换为年月日"><a href="#转换为年月日" class="headerlink" title="转换为年月日"></a>转换为年月日</h2><p>在spark sql用<strong>date_format</strong>进行处理，注意想要####-##-##模式，格式一定要<strong><u>y-MM-dd</u></strong>,这样用时间排序才没有问题，如果是<u><strong>y-M-d</strong></u>，出现的日期格式，排序会有问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_FORMAT(create_time, &apos;y-MM-dd&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="spark的视图"><a href="#spark的视图" class="headerlink" title="spark的视图"></a>spark的视图</h2><p>spark的视图创建非常方面，一般使用createOrReplaceTempView方法，创建视图，比如可以这样使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark.sql(&quot;select * from </span><br><span class="line">A where deleted=0&quot;).createOrReplaceTempView(&quot;a_view&quot;)</span><br></pre></td></tr></table></figure>
-<p>利用视图可以把复杂嵌套的sql分解一个个视图，最后得到想要的结果</p>
-<p>注意：视图不能全部数字，会报错。视图如果被使用过，需要重新创建。</p>
+        <h2 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h2><h3 id="1引用计数法"><a href="#1引用计数法" class="headerlink" title="1引用计数法"></a>1引用计数法</h3><h4 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h4><p>对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收</p>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用）</p>
+<p>2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。</p>
+<h3 id="2标记清除算法"><a href="#2标记清除算法" class="headerlink" title="2标记清除算法"></a>2标记清除算法</h3><p>标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词：</p>
+<p><strong>可达对象</strong>：通过根对象进行引用搜索，最终可以搜索到的对象</p>
+<p><strong>不可达对象</strong>：通过根对象进行搜索，最终没有被引用的对象</p>
+<p><strong>新生代：</strong>存放年轻的对象堆空间，年轻的对象指刚刚创建或者经理回收次数不多的对象</p>
+<p><strong>老年代：</strong>存放老年的对象的堆空间，老年对象指经历过多次垃圾回收依然存货的对象</p>
+<h4 id="思想：-1"><a href="#思想：-1" class="headerlink" title="思想："></a>思想：</h4><p>分为两个阶段，标记和清除。标记阶段：标记所有根对象可到达对象，未被标记的对象就是垃圾对象，清除阶段：系统回收不可到达的空间</p>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><p>回收后空间是不连续的。当再分配空间时，特别是大对象的时候，不连续的空间要低于连续的空间。</p>
+<h3 id="3-复制算法"><a href="#3-复制算法" class="headerlink" title="3.复制算法"></a>3.复制算法</h3><h4 id="思想：-2"><a href="#思想：-2" class="headerlink" title="思想："></a>思想：</h4><p>将原有的内存空间分成两块，每次只使用其中一块，在垃圾回收的时候，将正在使用的对象复制到未使用的内存中</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>如果系统中垃圾对象比较多，需要复制存活的比较少，效率比较高。还有就是复制对象到新的内存空间空间是连续的</p>
+<p>在java中新生代串行垃圾回收器中使用这个算法。新生代有分为eden区，from区和to区。其中from和to是两个相同大小的空间。</p>
+<h4 id="适用于："><a href="#适用于：" class="headerlink" title="适用于："></a>适用于：</h4><p>使用在新生代中，因为新生代中垃圾对象通常会多于存活对象</p>
+<h3 id="4标记压缩算法"><a href="#4标记压缩算法" class="headerlink" title="4标记压缩算法"></a>4标记压缩算法</h3><h4 id="思想：-3"><a href="#思想：-3" class="headerlink" title="思想："></a>思想：</h4><p>标记压缩算法，标记也是从根节点开始，对所有的可达对象进行标记。然后把所有存活对象压缩到内存的一段，清理边界外的空间。这样空间是连续的，没有碎片产生。所以看成标记清除算法+空间整理</p>
+<h4 id="适用于：-1"><a href="#适用于：-1" class="headerlink" title="适用于："></a>适用于：</h4><p>年老代通常使用这种算法，年老代对象大多情况下都是存活对象，如果在使用复制算法，复制成本比较高。</p>
+<h3 id="5分代算法"><a href="#5分代算法" class="headerlink" title="5分代算法"></a>5分代算法</h3><h4 id="思想：-4"><a href="#思想：-4" class="headerlink" title="思想："></a>思想：</h4><p>由于复制，标记压缩，标记清除各有优缺点。根据回收垃圾对象的特性，使用不同的算法这样比较好。基于这种思想，内存空间根据对象的特点分成不通的区间，对应不同的算法。</p>
+<p>一般内存分代，分成老年代和年轻代。老年代用于标记压缩算法和标记清除算法，新生代用于复制算法。老年代回收频率比较低，新生代回收频率比较高。</p>
+<h3 id="6分区算法"><a href="#6分区算法" class="headerlink" title="6分区算法"></a>6分区算法</h3><h4 id="思想：-5"><a href="#思想：-5" class="headerlink" title="思想："></a>思想：</h4><p>分代算法是根据对象的存活时间，分区则是把堆空间分成连续不同的小区间，每个区间独立使用，独立回收。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>一般来说，堆空间越大一次回收越多，从而产生的停顿越长。可以根据目标的停顿时间，每次回收若干个合理的区间，而不是整个空间。</p>
 
       
     </div>
@@ -416,7 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spark/" rel="tag"># spark</a>
+            <a href="/tags/虚拟机/" rel="tag"># 虚拟机</a>
           
         </div>
       
@@ -429,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/github+hexo搭建博客/" rel="next" title="github+hexo搭建博客">
-                <i class="fa fa-chevron-left"></i> github+hexo搭建博客
+              <a href="/sparksql time处理/" rel="next" title="sparkSQL 时间和视图处理">
+                <i class="fa fa-chevron-left"></i> sparkSQL 时间和视图处理
               </a>
             
           </div>
@@ -438,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/垃圾回收算法/" rel="prev" title="垃圾回收算法">
-                垃圾回收算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最近30天处理"><span class="nav-number">1.</span> <span class="nav-text">最近30天处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间相差几天"><span class="nav-number">2.</span> <span class="nav-text">时间相差几天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相差多少分钟"><span class="nav-number">3.</span> <span class="nav-text">相差多少分钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换为年月日"><span class="nav-number">4.</span> <span class="nav-text">转换为年月日</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark的视图"><span class="nav-number">5.</span> <span class="nav-text">spark的视图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收算法"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1引用计数法"><span class="nav-number">1.1.</span> <span class="nav-text">1引用计数法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想："><span class="nav-number">1.1.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点："><span class="nav-number">1.1.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2标记清除算法"><span class="nav-number">1.2.</span> <span class="nav-text">2标记清除算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点：-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-复制算法"><span class="nav-number">1.3.</span> <span class="nav-text">3.复制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.3.2.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用于："><span class="nav-number">1.3.3.</span> <span class="nav-text">适用于：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4标记压缩算法"><span class="nav-number">1.4.</span> <span class="nav-text">4标记压缩算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用于：-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">适用于：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5分代算法"><span class="nav-number">1.5.</span> <span class="nav-text">5分代算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">思想：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6分区算法"><span class="nav-number">1.6.</span> <span class="nav-text">6分区算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.6.2.</span> <span class="nav-text">优点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -792,9 +795,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://modelpi.com/sparksql time处理/';
-          this.page.identifier = 'sparksql time处理/';
-          this.page.title = 'sparkSQL 时间和视图处理';
+          this.page.url = 'http://modelpi.com/垃圾回收算法/';
+          this.page.identifier = '垃圾回收算法/';
+          this.page.title = '垃圾回收算法';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://xk.disqus.com/embed.js';

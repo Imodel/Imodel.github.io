@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/github+hexo搭建博客/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/垃圾回收算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/github+hexo搭建博客/" itemprop="url">github+hexo搭建博客</a></h1>
+                <a class="post-title-link" href="/垃圾回收算法/" itemprop="url">垃圾回收算法</a></h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T12:18:30+08:00">
-                2018-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-24T20:01:30+08:00">
+                2018-12-24
               </time>
             
 
@@ -322,8 +322,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/github+hexo搭建博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="github+hexo搭建博客/" itemprop="commentCount"></span>
+                <a href="/垃圾回收算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="垃圾回收算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,14 +384,26 @@
       
         
           
-            <p> 终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。</p>
-<h2 id="github创建工程"><a href="#github创建工程" class="headerlink" title="github创建工程"></a>github创建工程</h2><p>   <strong>工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别</strong></p>
-<h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   <strong>hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录</strong></p>
-<h2 id="一般使用的hexo指令"><a href="#一般使用的hexo指令" class="headerlink" title="一般使用的hexo指令"></a>一般使用的hexo指令</h2><p>hexo new  新建一篇文章</p>
-<p>hexo clean 清除缓存</p>
-<p>hexo generate 生成静态文件 可以简写成hexo g</p>
-<p>hexo deploy 部署之前生成的静态文件 简写成 hexo d</p>
-<p>我一般改写完之后，都是 hexo g -d</p>
+            <h2 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h2><h3 id="1引用计数法"><a href="#1引用计数法" class="headerlink" title="1引用计数法"></a>1引用计数法</h3><h4 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h4><p>对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收</p>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用）</p>
+<p>2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。</p>
+<h3 id="2标记清除算法"><a href="#2标记清除算法" class="headerlink" title="2标记清除算法"></a>2标记清除算法</h3><p>标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词：</p>
+<p><strong>可达对象</strong>：通过根对象进行引用搜索，最终可以搜索到的对象</p>
+<p><strong>不可达对象</strong>：通过根对象进行搜索，最终没有被引用的对象</p>
+<p><strong>新生代：</strong>存放年轻的对象堆空间，年轻的对象指刚刚创建或者经理回收次数不多的对象</p>
+<p><strong>老年代：</strong>存放老年的对象的堆空间，老年对象指经历过多次垃圾回收依然存货的对象</p>
+<h4 id="思想：-1"><a href="#思想：-1" class="headerlink" title="思想："></a>思想：</h4><p>分为两个阶段，标记和清除。标记阶段：标记所有根对象可到达对象，未被标记的对象就是垃圾对象，清除阶段：系统回收不可到达的空间</p>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><p>回收后空间是不连续的。当再分配空间时，特别是大对象的时候，不连续的空间要低于连续的空间。</p>
+<h3 id="3-复制算法"><a href="#3-复制算法" class="headerlink" title="3.复制算法"></a>3.复制算法</h3><h4 id="思想：-2"><a href="#思想：-2" class="headerlink" title="思想："></a>思想：</h4><p>将原有的内存空间分成两块，每次只使用其中一块，在垃圾回收的时候，将正在使用的对象复制到未使用的内存中</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>如果系统中垃圾对象比较多，需要复制存活的比较少，效率比较高。还有就是复制对象到新的内存空间空间是连续的</p>
+<p>在java中新生代串行垃圾回收器中使用这个算法。新生代有分为eden区，from区和to区。其中from和to是两个相同大小的空间。</p>
+<h4 id="适用于："><a href="#适用于：" class="headerlink" title="适用于："></a>适用于：</h4><p>使用在新生代中，因为新生代中垃圾对象通常会多于存活对象</p>
+<h3 id="4标记压缩算法"><a href="#4标记压缩算法" class="headerlink" title="4标记压缩算法"></a>4标记压缩算法</h3><h4 id="思想：-3"><a href="#思想：-3" class="headerlink" title="思想："></a>思想：</h4><p>标记压缩算法，标记也是从根节点开始，对所有的可达对象进行标记。然后把所有存活对象压缩到内存的一段，清理边界外的空间。这样空间是连续的，没有碎片产生。所以看成标记清除算法+空间整理</p>
+<h4 id="适用于：-1"><a href="#适用于：-1" class="headerlink" title="适用于："></a>适用于：</h4><p>年老代通常使用这种算法，年老代对象大多情况下都是存活对象，如果在使用复制算法，复制成本比较高。</p>
+<h3 id="5分代算法"><a href="#5分代算法" class="headerlink" title="5分代算法"></a>5分代算法</h3><h4 id="思想：-4"><a href="#思想：-4" class="headerlink" title="思想："></a>思想：</h4><p>由于复制，标记压缩，标记清除各有优缺点。根据回收垃圾对象的特性，使用不同的算法这样比较好。基于这种思想，内存空间根据对象的特点分成不通的区间，对应不同的算法。</p>
+<p>一般内存分代，分成老年代和年轻代。老年代用于标记压缩算法和标记清除算法，新生代用于复制算法。老年代回收频率比较低，新生代回收频率比较高。</p>
+<h3 id="6分区算法"><a href="#6分区算法" class="headerlink" title="6分区算法"></a>6分区算法</h3><h4 id="思想：-5"><a href="#思想：-5" class="headerlink" title="思想："></a>思想：</h4><p>分代算法是根据对象的存活时间，分区则是把堆空间分成连续不同的小区间，每个区间独立使用，独立回收。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>一般来说，堆空间越大一次回收越多，从而产生的停顿越长。可以根据目标的停顿时间，每次回收若干个合理的区间，而不是整个空间。</p>
 
           
         
@@ -622,6 +634,196 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/github+hexo搭建博客/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxiaokun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="model">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/github+hexo搭建博客/" itemprop="url">github+hexo搭建博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T12:18:30+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/github+hexo搭建博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="github+hexo搭建博客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 终于利用github+hexo搭建完博客，现在聊一下搭建博客历程和遇到的坑。</p>
+<h2 id="github创建工程"><a href="#github创建工程" class="headerlink" title="github创建工程"></a>github创建工程</h2><p>   <strong>工程的名字一定要是{你的名字}.github.io，这样你的项目访问的路径才是{你的名字}.github.io,要不然会带上github的域名和普通的项目没有区别</strong></p>
+<h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   <strong>hexo init 如果没有指定目录，会在当前目录下建立网站。如果当前目录不为会报错，也可以指定目录</strong></p>
+<h2 id="一般使用的hexo指令"><a href="#一般使用的hexo指令" class="headerlink" title="一般使用的hexo指令"></a>一般使用的hexo指令</h2><p>hexo new  新建一篇文章</p>
+<p>hexo clean 清除缓存</p>
+<p>hexo generate 生成静态文件 可以简写成hexo g</p>
+<p>hexo deploy 部署之前生成的静态文件 简写成 hexo d</p>
+<p>我一般改写完之后，都是 hexo g -d</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -668,7 +870,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -690,7 +892,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
