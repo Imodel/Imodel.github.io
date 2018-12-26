@@ -316,6 +316,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/垃圾回收算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/垃圾回收算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -468,9 +478,8 @@
           
 
   
-    	  <div id="gitalk-container"></div>
-    </div>
-  
+    <div class="comments" id="comments">
+	  
 
 
 
@@ -604,8 +613,8 @@
 
 
         
-      </main></div>
-    
+      </div>
+    </div></main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
@@ -676,7 +685,7 @@
 
     
 
-  
+  </div>
 
   
 
@@ -801,23 +810,29 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'YgnpUIegG8AimMJhR2leas5D-gzGzoHsz',
+        appKey: 'pz6n88wRgjhVScn2i1nhV0tM',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="/js/src/md5.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '6232446e150b1b267636',
-          clientSecret: 'a4532ce54b779859faf98833882a9b59a64661ac',
-          repo: 'Imodel.github.io',
-          owner: 'Imodel',
-          admin: ['Imodel'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
 
 
