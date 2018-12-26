@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content=",,,,,">
+  <meta name="keywords" content="poi,scala,excel,">
 
 
 
@@ -78,14 +78,14 @@
 
 
 <meta name="description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
-<meta name="keywords" content="scala">
-<meta property="og:type" content="website">
+<meta name="keywords" content="poi,scala,excel">
+<meta property="og:type" content="article">
 <meta property="og:title" content="scala利用poi导出Excel">
-<meta property="og:url" content="http://modelpi.com/scala导出Excel及所遇到的问题.html">
+<meta property="og:url" content="http://modelpi.com/scala导出Excel及所遇到的问题/index.html">
 <meta property="og:site_name" content="model">
 <meta property="og:description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-26T02:58:03.009Z">
+<meta property="og:updated_time" content="2018-12-26T02:59:55.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scala利用poi导出Excel">
 <meta name="twitter:description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/scala导出Excel及所遇到的问题.html">
+  <link rel="canonical" href="http://modelpi.com/scala导出Excel及所遇到的问题/">
 
 
 
@@ -239,24 +239,154 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/scala导出Excel及所遇到的问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxiaokun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="model">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">scala利用poi导出Excel</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。</p>
+          <h1 class="post-title" itemprop="name headline">scala利用poi导出Excel</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-25T20:01:30+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/scala导出Excel及所遇到的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="scala导出Excel及所遇到的问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。</p>
 <p>利用Apache poi包进行处理，用的是4.0.1，依赖包：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建file</span></span><br><span class="line">    <span class="keyword">val</span> file = <span class="keyword">new</span> <span class="type">File</span>(<span class="string">"/Users/xk/Desktop/a.xlsx"</span>)</span><br><span class="line">    <span class="comment">//val ps = new POIFSFileSystem(new BufferedInputStream(new FileInputStream("/Users/xk/Desktop/a.xlsx")))</span></span><br><span class="line">    <span class="comment">//判断file是否存在，不存在创建</span></span><br><span class="line">    <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        file.createNewFile()</span><br><span class="line">       <span class="comment">// WorkbookFactory.create(new FileInputStream("/Users/xk/Desktop/a.xlsx"))</span></span><br><span class="line">      &#125;<span class="keyword">catch</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> ex:<span class="type">IOException</span>=&gt;&#123;</span><br><span class="line">          println(<span class="string">"error"</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//excel处理Excel的类</span></span><br><span class="line">    <span class="keyword">val</span> hssf = <span class="keyword">new</span> <span class="type">XSSFWorkbook</span>()</span><br><span class="line">    <span class="comment">//创建一个工作簿</span></span><br><span class="line">    <span class="keyword">val</span> sheet = hssf.createSheet(<span class="string">"student"</span>)</span><br><span class="line">    <span class="comment">//创建第一行，一般都是的头部</span></span><br><span class="line">    <span class="keyword">val</span> firstRow = sheet.createRow(<span class="number">0</span>)</span><br><span class="line">    <span class="comment">//设置行头</span></span><br><span class="line">    <span class="keyword">val</span> heads = <span class="type">Array</span>[<span class="type">String</span>](<span class="string">"名字"</span>,<span class="string">"年龄"</span>,<span class="string">"班级"</span>)</span><br><span class="line">    <span class="comment">//设置头部</span></span><br><span class="line">    <span class="keyword">for</span>(i&lt;- <span class="number">0</span> until heads.length)&#123;</span><br><span class="line">      <span class="keyword">val</span> cell = firstRow.createCell(i)</span><br><span class="line">      cell.setCellValue(<span class="keyword">new</span> <span class="type">XSSFRichTextString</span>(heads(i)))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> rowlist = parkDF.collect().toList</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i &lt;- <span class="number">0</span> until rowlist.length)&#123;</span><br><span class="line">      <span class="keyword">val</span> erow = sheet.createRow(i+<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">val</span> xlsDot = rowlist(i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell = erow.createCell(<span class="number">0</span>)</span><br><span class="line">      sortCell.setCellValue(xlsDot.getString(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell1 = erow.createCell(<span class="number">1</span>)</span><br><span class="line">      sortCell1.setCellValue(xlsDot.getString(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell2 = erow.createCell(<span class="number">2</span>)</span><br><span class="line">      sortCell2.setCellValue(xlsDot.getString(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> out = <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"/Users/xk/Desktop/a.xlsx"</span>)</span><br><span class="line">    hssf.write(out)</span><br><span class="line">    out.close()</span><br><span class="line">    <span class="comment">//in.close()</span></span><br><span class="line">    hssf.close()</span><br></pre></td></tr></table></figure>
@@ -267,15 +397,67 @@
 <p>看到网上例子，创建XSSFWorkbook的时候，有用fileInputStream参数创建的。我就用了val hssf = new XSSFWorkbook(new FileInputStream(“/Users/g2/Desktop/a.xlsx”))的方式报错，结果一直报这个错误，去掉流的参数就可以了</p>
 <p>#### </p>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/poi/" rel="tag"># poi</a>
+          
+            <a href="/tags/scala/" rel="tag"># scala</a>
+          
+            <a href="/tags/excel/" rel="tag"># excel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/垃圾回收算法/" rel="next" title="垃圾回收算法">
+                <i class="fa fa-chevron-left"></i> 垃圾回收算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -343,7 +525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -365,7 +547,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -607,8 +789,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://modelpi.com/scala导出Excel及所遇到的问题.html';
-          this.page.identifier = 'scala导出Excel及所遇到的问题.html';
+          this.page.url = 'http://modelpi.com/scala导出Excel及所遇到的问题/';
+          this.page.identifier = 'scala导出Excel及所遇到的问题/';
           this.page.title = 'scala利用poi导出Excel';
         };
         var d = document, s = d.createElement('script');
