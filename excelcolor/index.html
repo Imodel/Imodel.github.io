@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="spark,">
+  <meta name="keywords" content="scala,poi,Excel,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
-<meta name="keywords" content="spark">
+<meta name="description" content="上次利用poi导出Excel，写了一个Excel的工具类，感觉还是挺好用的。但是有一个问题，Excel的头部是白色和下面的内容的颜色是一样的。这看着怎么可以。于是想着添加一下背景色 掉坑Excel的处理逻辑从大到小，首先创建一个工作簿（sheet），然后创建里面的行（row），在行中创建单元格（cell），然后在cell中赋值这样Excel中的值就来。 所以我认为cell对象中直接设置背景颜色的方">
+<meta name="keywords" content="scala,poi,Excel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sparkSQL 时间和视图处理">
-<meta property="og:url" content="http://modelpi.com/sparksql time处理/index.html">
+<meta property="og:title" content="scala利用poi给Excel添加颜色">
+<meta property="og:url" content="http://modelpi.com/excelcolor/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
+<meta property="og:description" content="上次利用poi导出Excel，写了一个Excel的工具类，感觉还是挺好用的。但是有一个问题，Excel的头部是白色和下面的内容的颜色是一样的。这看着怎么可以。于是想着添加一下背景色 掉坑Excel的处理逻辑从大到小，首先创建一个工作簿（sheet），然后创建里面的行（row），在行中创建单元格（cell），然后在cell中赋值这样Excel中的值就来。 所以我认为cell对象中直接设置背景颜色的方">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-20T11:14:56.017Z">
+<meta property="og:updated_time" content="2018-12-31T05:25:12.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sparkSQL 时间和视图处理">
-<meta name="twitter:description" content="上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。 最近30天处理在spark sql中处理：1date_sub(now(),30) &amp;lt;=create_time 在mysql处理:1DATE_SUB(CURDATE(), INTERVAL 30 DAY) &amp;lt;=create_tim">
+<meta name="twitter:title" content="scala利用poi给Excel添加颜色">
+<meta name="twitter:description" content="上次利用poi导出Excel，写了一个Excel的工具类，感觉还是挺好用的。但是有一个问题，Excel的头部是白色和下面的内容的颜色是一样的。这看着怎么可以。于是想着添加一下背景色 掉坑Excel的处理逻辑从大到小，首先创建一个工作簿（sheet），然后创建里面的行（row），在行中创建单元格（cell），然后在cell中赋值这样Excel中的值就来。 所以我认为cell对象中直接设置背景颜色的方">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/sparksql time处理/">
+  <link rel="canonical" href="http://modelpi.com/excelcolor/">
 
 
 
 
 
-  <title>sparkSQL 时间和视图处理 | model</title>
+  <title>scala利用poi给Excel添加颜色 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/sparksql time处理/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/excelcolor/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sparkSQL 时间和视图处理</h1>
+          <h1 class="post-title" itemprop="name headline">scala利用poi给Excel添加颜色</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T12:18:30+08:00">
-                2018-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T13:25:30+08:00">
+                2018-12-31
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/sparksql time处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/sparksql time处理/" itemprop="commentCount"></span>
+                <a href="/excelcolor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/excelcolor/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,20 +386,12 @@
       
 
       
-        <p> 上周利用spark sql统计mysql数据库中数据然后导入mysql的报表库中，遇到了一些时间处理的问题，记录一下mysql和spark sql处理不同。</p>
-<h2 id="最近30天处理"><a href="#最近30天处理" class="headerlink" title="最近30天处理"></a>最近30天处理</h2><p>在spark sql中处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_sub(now(),30) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
-<p>在mysql处理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=create_time</span><br></pre></td></tr></table></figure></p>
-<h2 id="时间相差几天"><a href="#时间相差几天" class="headerlink" title="时间相差几天"></a>时间相差几天</h2><p>在spark sql处理（和mysql一直）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datediff(start_time,end_time)&lt;1(天数)</span><br></pre></td></tr></table></figure>
-<h2 id="相差多少分钟"><a href="#相差多少分钟" class="headerlink" title="相差多少分钟"></a>相差多少分钟</h2><p>在spark sql先把两个时间转换时间戳，然后再除以60.利用<strong>unix_timestamp</strong>函数进行处理,下面是转换为秒</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_timestamp(a.depart_time)-unix_timestamp(a.enter_time)</span><br></pre></td></tr></table></figure>
-<h2 id="转换为年月日"><a href="#转换为年月日" class="headerlink" title="转换为年月日"></a>转换为年月日</h2><p>在spark sql用<strong>date_format</strong>进行处理，注意想要####-##-##模式，格式一定要<strong><u>y-MM-dd</u></strong>,这样用时间排序才没有问题，如果是<u><strong>y-M-d</strong></u>，出现的日期格式，排序会有问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_FORMAT(create_time, &apos;y-MM-dd&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="spark的视图"><a href="#spark的视图" class="headerlink" title="spark的视图"></a>spark的视图</h2><p>spark的视图创建非常方面，一般使用createOrReplaceTempView方法，创建视图，比如可以这样使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark.sql(&quot;select * from </span><br><span class="line">A where deleted=0&quot;).createOrReplaceTempView(&quot;a_view&quot;)</span><br></pre></td></tr></table></figure>
-<p>利用视图可以把复杂嵌套的sql分解一个个视图，最后得到想要的结果</p>
-<p>注意：视图不能全部数字，会报错。视图如果被使用过，需要重新创建。</p>
-
+        <p>上次利用poi导出Excel，写了一个Excel的工具类，感觉还是挺好用的。但是有一个问题，Excel的头部是白色和下面的内容的颜色是一样的。这看着怎么可以。于是想着添加一下背景色</p>
+<h4 id="掉坑"><a href="#掉坑" class="headerlink" title="掉坑"></a>掉坑</h4><p>Excel的处理逻辑从大到小，首先创建一个工作簿（sheet），然后创建里面的行（row），在行中创建单元格（cell），然后在cell中赋值这样Excel中的值就来。</p>
+<p>所以我认为cell对象中直接设置背景颜色的方法setcolor这个方法。然而没有。只有一个setCellStyle的方法，传入的对象XSSFCellStyle，那只能创建这个对象。注意这个对象是用<strong>XSSFWorkbook</strong>创建的。</p>
+<p>找到这个对象之后，看一下有没有关于颜色的方法，找到两个<strong>setFillForegroundColor</strong>和<strong>setFillBackgroundColor</strong>，看到方法肯定用setFillBackgroundColor，但是万万没有想到，直接把cell中内容覆盖了。所以使用setFillForegroundColor这个方法试一下，最后成功了，然后看api中介绍，发现api中介绍：many cells are actually filled with a foreground fill。</p>
+<p>看到这个方法用的是XSSFColor对象，那就再new一下，看一下XSSFColor的对象和方法：发现一个public XSSFColor(Color clr)构造方法，注意这里面的Color对象是<strong>java.awt.Color</strong>而不是<strong>org.apache.poi.ss.usermodel.Color</strong>，可以直接用Color.RED设置红色。我调色的时候喜欢用rgb的数值来确定颜色，于是找到XSSFColor有setRGB方法，感觉离成功不远了，下面贴一下代码供大家参考</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> style = xssf.createCellStyle()</span><br><span class="line"><span class="keyword">val</span> color =<span class="keyword">new</span> <span class="type">XSSFColor</span>()</span><br><span class="line">color.setRGB(<span class="type">Array</span>(<span class="number">189.</span>toByte,<span class="number">183.</span>toByte,<span class="number">107.</span>toByte))</span><br><span class="line">style.setFillForegroundColor(color)</span><br><span class="line">style.setFillPattern(<span class="type">FillPatternType</span>.<span class="type">SOLID_FOREGROUND</span>)</span><br><span class="line">cell.setCellStyle(style)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -416,7 +408,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spark/" rel="tag"># spark</a>
+            <a href="/tags/scala/" rel="tag"># scala</a>
+          
+            <a href="/tags/poi/" rel="tag"># poi</a>
+          
+            <a href="/tags/Excel/" rel="tag"># Excel</a>
           
         </div>
       
@@ -429,15 +425,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/huishouqi/" rel="next" title="垃圾回收器">
+                <i class="fa fa-chevron-left"></i> 垃圾回收器
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/github+hexo搭建博客/" rel="prev" title="github+hexo搭建博客">
-                github+hexo搭建博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最近30天处理"><span class="nav-number">1.</span> <span class="nav-text">最近30天处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间相差几天"><span class="nav-number">2.</span> <span class="nav-text">时间相差几天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相差多少分钟"><span class="nav-number">3.</span> <span class="nav-text">相差多少分钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换为年月日"><span class="nav-number">4.</span> <span class="nav-text">转换为年月日</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark的视图"><span class="nav-number">5.</span> <span class="nav-text">spark的视图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#掉坑"><span class="nav-number">1.</span> <span class="nav-text">掉坑</span></a></li></ol></div>
             
 
           </div>
