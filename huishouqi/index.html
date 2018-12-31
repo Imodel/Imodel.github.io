@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
+<meta name="description" content="垃圾回收器1.串行回收器串行回收器是指使用单线程进行垃圾回收的回收器，每次回收只有一个线程，专注性和独占性有更好的性能表现，可以在新生代和老年代使用，所以可以分为新生代串行回收器和老年代串行回收器 1.1新生代串行回收器特点：单线程进行垃圾回收，独占式的垃圾回收。新生代串行回收器采用复制算法，实现简单，处理高兴，没有线程切换开销。在某些场景下超越并行回收器和并发回收器（比如单cpu等） 当串行回收">
 <meta name="keywords" content="虚拟机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="垃圾回收算法">
-<meta property="og:url" content="http://modelpi.com/垃圾回收算法/index.html">
+<meta property="og:title" content="垃圾回收器">
+<meta property="og:url" content="http://modelpi.com/huishouqi/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
+<meta property="og:description" content="垃圾回收器1.串行回收器串行回收器是指使用单线程进行垃圾回收的回收器，每次回收只有一个线程，专注性和独占性有更好的性能表现，可以在新生代和老年代使用，所以可以分为新生代串行回收器和老年代串行回收器 1.1新生代串行回收器特点：单线程进行垃圾回收，独占式的垃圾回收。新生代串行回收器采用复制算法，实现简单，处理高兴，没有线程切换开销。在某些场景下超越并行回收器和并发回收器（比如单cpu等） 当串行回收">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-24T12:01:54.108Z">
+<meta property="og:updated_time" content="2018-12-31T04:31:57.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垃圾回收算法">
-<meta name="twitter:description" content="垃圾回收算法1引用计数法思想：对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收 缺点：1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用） 2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。 2标记清除算法标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词： 可达对象：通过根对象进行引用搜索">
+<meta name="twitter:title" content="垃圾回收器">
+<meta name="twitter:description" content="垃圾回收器1.串行回收器串行回收器是指使用单线程进行垃圾回收的回收器，每次回收只有一个线程，专注性和独占性有更好的性能表现，可以在新生代和老年代使用，所以可以分为新生代串行回收器和老年代串行回收器 1.1新生代串行回收器特点：单线程进行垃圾回收，独占式的垃圾回收。新生代串行回收器采用复制算法，实现简单，处理高兴，没有线程切换开销。在某些场景下超越并行回收器和并发回收器（比如单cpu等） 当串行回收">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/垃圾回收算法/">
+  <link rel="canonical" href="http://modelpi.com/huishouqi/">
 
 
 
 
 
-  <title>垃圾回收算法 | model</title>
+  <title>垃圾回收器 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/垃圾回收算法/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/huishouqi/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">垃圾回收算法</h1>
+          <h1 class="post-title" itemprop="name headline">垃圾回收器</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-24T20:01:30+08:00">
-                2018-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T12:30:30+08:00">
+                2018-12-31
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/垃圾回收算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/垃圾回收算法/" itemprop="commentCount"></span>
+                <a href="/huishouqi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/huishouqi/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,26 +386,59 @@
       
 
       
-        <h2 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h2><h3 id="1引用计数法"><a href="#1引用计数法" class="headerlink" title="1引用计数法"></a>1引用计数法</h3><h4 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h4><p>对象A引用了就加1，引用失效了就减1，当引用数为0时，就可以回收</p>
-<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>1、无法处理循环引用情况（对象A引用对象B，对象B引用对象A，但是A和B都没有别的对象引用）</p>
-<p>2、引用计数器要求每次引用产生和消除的时候，都伴随着加法和减法的操作，对系统有一定的影响。</p>
-<h3 id="2标记清除算法"><a href="#2标记清除算法" class="headerlink" title="2标记清除算法"></a>2标记清除算法</h3><p>标记清除算法是现代回收算法的基础思想，在介绍之前先解释两个名词：</p>
-<p><strong>可达对象</strong>：通过根对象进行引用搜索，最终可以搜索到的对象</p>
-<p><strong>不可达对象</strong>：通过根对象进行搜索，最终没有被引用的对象</p>
-<p><strong>新生代：</strong>存放年轻的对象堆空间，年轻的对象指刚刚创建或者经理回收次数不多的对象</p>
-<p><strong>老年代：</strong>存放老年的对象的堆空间，老年对象指经历过多次垃圾回收依然存货的对象</p>
-<h4 id="思想：-1"><a href="#思想：-1" class="headerlink" title="思想："></a>思想：</h4><p>分为两个阶段，标记和清除。标记阶段：标记所有根对象可到达对象，未被标记的对象就是垃圾对象，清除阶段：系统回收不可到达的空间</p>
-<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><p>回收后空间是不连续的。当再分配空间时，特别是大对象的时候，不连续的空间要低于连续的空间。</p>
-<h3 id="3-复制算法"><a href="#3-复制算法" class="headerlink" title="3.复制算法"></a>3.复制算法</h3><h4 id="思想：-2"><a href="#思想：-2" class="headerlink" title="思想："></a>思想：</h4><p>将原有的内存空间分成两块，每次只使用其中一块，在垃圾回收的时候，将正在使用的对象复制到未使用的内存中</p>
-<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>如果系统中垃圾对象比较多，需要复制存活的比较少，效率比较高。还有就是复制对象到新的内存空间空间是连续的</p>
-<p>在java中新生代串行垃圾回收器中使用这个算法。新生代有分为eden区，from区和to区。其中from和to是两个相同大小的空间。</p>
-<h4 id="适用于："><a href="#适用于：" class="headerlink" title="适用于："></a>适用于：</h4><p>使用在新生代中，因为新生代中垃圾对象通常会多于存活对象</p>
-<h3 id="4标记压缩算法"><a href="#4标记压缩算法" class="headerlink" title="4标记压缩算法"></a>4标记压缩算法</h3><h4 id="思想：-3"><a href="#思想：-3" class="headerlink" title="思想："></a>思想：</h4><p>标记压缩算法，标记也是从根节点开始，对所有的可达对象进行标记。然后把所有存活对象压缩到内存的一段，清理边界外的空间。这样空间是连续的，没有碎片产生。所以看成标记清除算法+空间整理</p>
-<h4 id="适用于：-1"><a href="#适用于：-1" class="headerlink" title="适用于："></a>适用于：</h4><p>年老代通常使用这种算法，年老代对象大多情况下都是存活对象，如果在使用复制算法，复制成本比较高。</p>
-<h3 id="5分代算法"><a href="#5分代算法" class="headerlink" title="5分代算法"></a>5分代算法</h3><h4 id="思想：-4"><a href="#思想：-4" class="headerlink" title="思想："></a>思想：</h4><p>由于复制，标记压缩，标记清除各有优缺点。根据回收垃圾对象的特性，使用不同的算法这样比较好。基于这种思想，内存空间根据对象的特点分成不通的区间，对应不同的算法。</p>
-<p>一般内存分代，分成老年代和年轻代。老年代用于标记压缩算法和标记清除算法，新生代用于复制算法。老年代回收频率比较低，新生代回收频率比较高。</p>
-<h3 id="6分区算法"><a href="#6分区算法" class="headerlink" title="6分区算法"></a>6分区算法</h3><h4 id="思想：-5"><a href="#思想：-5" class="headerlink" title="思想："></a>思想：</h4><p>分代算法是根据对象的存活时间，分区则是把堆空间分成连续不同的小区间，每个区间独立使用，独立回收。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>一般来说，堆空间越大一次回收越多，从而产生的停顿越长。可以根据目标的停顿时间，每次回收若干个合理的区间，而不是整个空间。</p>
+        <h2 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h2><h3 id="1-串行回收器"><a href="#1-串行回收器" class="headerlink" title="1.串行回收器"></a>1.串行回收器</h3><p>串行回收器是指使用单线程进行垃圾回收的回收器，每次回收只有一个线程，专注性和独占性有更好的性能表现，可以在新生代和老年代使用，所以可以分为新生代串行回收器和老年代串行回收器</p>
+<h4 id="1-1新生代串行回收器"><a href="#1-1新生代串行回收器" class="headerlink" title="1.1新生代串行回收器"></a>1.1新生代串行回收器</h4><h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>单线程进行垃圾回收，独占式的垃圾回收。新生代串行回收器采用复制算法，实现简单，处理高兴，没有线程切换开销。在某些场景下超越并行回收器和并发回收器（比如单cpu等）</p>
+<p>当串行回收器进行垃圾回收，java中的所有线程都会暂停，所以实时性要求高的应用场景，不能被接收</p>
+<p>使用-XX:+UseSerialGC可以指定新生代串行回收器或者老年代串行回收器，当虚拟机在Client模式下，默认的垃圾回收器</p>
+<h4 id="1-2老年代串行回收器"><a href="#1-2老年代串行回收器" class="headerlink" title="1.2老年代串行回收器"></a>1.2老年代串行回收器</h4><h5 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h5><p>老年代串行回收器使用的标记压缩算法，也是一个串行独占的垃圾回收器，由于老年代垃圾回收时间一般比新生代要长，所以停顿时间也可以比较长</p>
+<p>-XX:+UseSerialGC：新生代和老年代都使用串行回收器</p>
+<p>-XX:+UseParNewGC：新生代使用ParNew回收器，老年代都使用串行回收器</p>
+<p>-XX:+UseParallelGC：新生代使用Parallel回收器，老年代都使用串行回收器</p>
+<h3 id="2-并行回收器"><a href="#2-并行回收器" class="headerlink" title="2.并行回收器"></a>2.并行回收器</h3><p>并行回收器在串行基础上做了改进，使用多个线程同时进行垃圾回收，对于并行能力较强的计算，可以有效缩短垃圾回收所需的实际时间</p>
+<h4 id="2-1新生代ParNew回收器"><a href="#2-1新生代ParNew回收器" class="headerlink" title="2.1新生代ParNew回收器"></a>2.1新生代ParNew回收器</h4><p>ParNew回收器是用于新生代垃圾回收，它只是简单地将串行回收器多线程化，回收策略，算法和参数和新生代串行回收器一样。ParNew也是一个独占式的回收器，所以应用程序会全部暂停，但是在并发能力较强的机器上，回收时间要短于串行回收器</p>
+<p>-XX:+UseConcMarkSweepGC：新生代使用ParNew回收器，老年代使用CMS</p>
+<p>-XX:ParallelGCThreads：ParNew回收器线程数量。</p>
+<h4 id="2-2新生代ParallelGC回收器"><a href="#2-2新生代ParallelGC回收器" class="headerlink" title="2.2新生代ParallelGC回收器"></a>2.2新生代ParallelGC回收器</h4><p>从表面上看和ParNew回收器一样，使用复制算法，多线程和独占式的收集器。它有一个很重要的特点就是关注系统的吞吐量。有两个重要的参数：</p>
+<p>-XX:MaxGCPauseMills:设置最大垃圾回收的停顿时间</p>
+<p>-XX:GCTimeRatio: 设置吞吐量的大小，默认值是99，就是1%(1/(1+99))的时间用于垃圾收集</p>
+<p>-XX:UseAdaptiveSizePolicy 是一种自适应的GC调节策略，在这种模式下，新生代的大小，end和survivior的比例，晋升老年代的对象年龄参数都会自动调整已达到堆大小，吞吐量和停顿之间的平衡点。</p>
+<p><strong>注意：</strong>-XX:MaxGCPauseMills和-XX:GCTimeRatio是两个互相矛盾的参数。</p>
+<h4 id="2-3老年代ParallelOldGC回收器"><a href="#2-3老年代ParallelOldGC回收器" class="headerlink" title="2.3老年代ParallelOldGC回收器"></a>2.3老年代ParallelOldGC回收器</h4><p>老年代ParallelOldGC回收器也是多线程并发的收集器，关注吞吐量的一个回收器。用的是比较压缩算法，其余参数和ParallelGC回收器类似，一个用于新生代一个用于老年代。</p>
+<h3 id="3-CMS回收器"><a href="#3-CMS回收器" class="headerlink" title="3.CMS回收器"></a>3.CMS回收器</h3><p>CMS是Concurrent Mark Sweep的缩写，意思是并发标记清除，它使用的标记清除算法，同时又是一个多线程并行回收的垃圾回收器。</p>
+<h4 id="回收步骤"><a href="#回收步骤" class="headerlink" title="回收步骤"></a>回收步骤</h4><ol>
+<li>初始标记：独占资源，标记跟对象</li>
+<li>并发标记：标记所有对象</li>
+<li>预清理：清理准备以及控制停顿时间</li>
+<li>重新标记：独占资源，修正并发标记对象</li>
+<li>并发清理：清理垃圾</li>
+<li>并发重置</li>
+</ol>
+<p>根据标记清除算法：初始标记，并发标记和重新标记都是标记清除的对象。并发清理则是正式回收垃圾对象，并发重置是在垃圾回收完成后，重新初始化cms数据结构和数据</p>
+<h4 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h4><p>-XX:+UseConcMarkSweepGC 启用cms垃圾回收器</p>
+<p>-XX:ConcMarkThreads 并发线程数</p>
+<p>-XX:+CMSInitiatingOccupancyFraction 内存空间使用阈值，默认68%，达到阈值时会进行垃圾回收</p>
+<p>-XX:+UseFullGCsBeforeCompaction:回收多少次后，进行内存压缩</p>
+<p>-XX:+UseCMSCompactAtFullCollection 使CMS垃圾回收之后进行内存碎片整理，注意内存碎片整理不是并发的</p>
+<h3 id="4-G1回收器"><a href="#4-G1回收器" class="headerlink" title="4.G1回收器"></a>4.G1回收器</h3><p>G1回收器是从jdk7开始正式使用的回收器，回收还是分年轻代和老年代。但是它使用分区算法，其特点如下：</p>
+<p><strong>并行性：</strong> 垃圾回收期间，可以多个GC线程同时进行</p>
+<p><strong>并发性：</strong>程序和GC交替进行，所以不会完全阻塞程序</p>
+<p><strong>分代GC：</strong>G1依然是一个分代回收器，兼顾年轻代和老年代。</p>
+<p><strong>空间整理：</strong>在回收过程中会进行适当的空间移动，有效的复制对象，减少空间碎片</p>
+<p><strong>可预见性：</strong>由于分区的原因，可以选择部分区域进行回收，所以全局停顿可以得到很好的控制</p>
+<p>注意：并行：程序会停顿，多线程同时进行，并发：程序和回收交替进行。</p>
+<p>G1的回收过程可能有4个阶段：</p>
+<p>新生代GC，并发标记周期，混合收集，可能会进行full GC</p>
+<h5 id="1-新生代GC"><a href="#1-新生代GC" class="headerlink" title="1.新生代GC"></a>1.新生代GC</h5><p>新生代GC是主要工作是回收eden区和survivor区，一旦eden区被占满，新生代GC就会启动。新生代GC只处理eden区和survivor区，回收之后所有eden区都应该被清空，survivor区清除一部分。还有一个变化就是年老代会增多</p>
+<h5 id="2-并发标记周期"><a href="#2-并发标记周期" class="headerlink" title="2.并发标记周期"></a>2.并发标记周期</h5><p>并发标记周期可以分为以下步骤：</p>
+<p><strong>初始标记：</strong>标记从根节点可以直接到达的对象，它伴随着一次新生代GC,会产生停顿，应用程序在这个线程中会停顿</p>
+<p><strong>根区域扫描：</strong>这个可以跟应用程序一起运行</p>
+<p><strong>并发标记：</strong>查找整个堆的存活对象，并做好标记</p>
+<p><strong>重新标记：</strong>并发过程中程序依然进行，结果可能需要修正，重新标记，对上次结果进行补充，为了加快标记速度，会创建一个快照。</p>
+<p><strong>独占清理：</strong>这个阶段会引起停顿，它计算各个区域存活对象和GC回收比例进行排序，识别可供回收的区域。会标记可以混合回收区域，混合回收阶段会需要这些信息</p>
+<p><strong>并发清理阶段：</strong>识别并清理完全空闲区域，并发清理，不会引起停顿</p>
+<h5 id="3-混合回收："><a href="#3-混合回收：" class="headerlink" title="3.混合回收："></a>3.混合回收：</h5><p>在并发标记周期中会回收一部分对象，但是总体来说还是比例相当低。在并发标记周期中已经知道哪些可以区域可以混合回收，这个阶段就是对这些区域进行回收。会优先回收垃圾比例比较高的区域因为这些区域性价比比较高。它会回收年轻大和老年代区域。</p>
+<p>4.必要时full GC</p>
+<p>并发收集和应用程序交替运行，这样就不能避免在特别繁忙的场合出现回收过程中内存不足情况。当遇到这种情况G1就会进行full GC</p>
 
       
     </div>
@@ -436,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/github+hexo搭建博客/" rel="next" title="github+hexo搭建博客">
-                <i class="fa fa-chevron-left"></i> github+hexo搭建博客
+              <a href="/scala导出Excel及所遇到的问题/" rel="next" title="scala利用poi导出Excel">
+                <i class="fa fa-chevron-left"></i> scala利用poi导出Excel
               </a>
             
           </div>
@@ -445,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/scala导出Excel及所遇到的问题/" rel="prev" title="scala利用poi导出Excel">
-                scala利用poi导出Excel <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -598,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收算法"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1引用计数法"><span class="nav-number">1.1.</span> <span class="nav-text">1引用计数法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想："><span class="nav-number">1.1.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点："><span class="nav-number">1.1.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2标记清除算法"><span class="nav-number">1.2.</span> <span class="nav-text">2标记清除算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点：-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-复制算法"><span class="nav-number">1.3.</span> <span class="nav-text">3.复制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.3.2.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用于："><span class="nav-number">1.3.3.</span> <span class="nav-text">适用于：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4标记压缩算法"><span class="nav-number">1.4.</span> <span class="nav-text">4标记压缩算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用于：-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">适用于：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5分代算法"><span class="nav-number">1.5.</span> <span class="nav-text">5分代算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">思想：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6分区算法"><span class="nav-number">1.6.</span> <span class="nav-text">6分区算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想：-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.6.2.</span> <span class="nav-text">优点</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收器"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-串行回收器"><span class="nav-number">1.1.</span> <span class="nav-text">1.串行回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1新生代串行回收器"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1新生代串行回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点："><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2老年代串行回收器"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2老年代串行回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点：-1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">特点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-并行回收器"><span class="nav-number">1.2.</span> <span class="nav-text">2.并行回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1新生代ParNew回收器"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1新生代ParNew回收器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2新生代ParallelGC回收器"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2新生代ParallelGC回收器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3老年代ParallelOldGC回收器"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3老年代ParallelOldGC回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CMS回收器"><span class="nav-number">1.3.</span> <span class="nav-text">3.CMS回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回收步骤"><span class="nav-number">1.3.1.</span> <span class="nav-text">回收步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要参数"><span class="nav-number">1.3.2.</span> <span class="nav-text">主要参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-G1回收器"><span class="nav-number">1.4.</span> <span class="nav-text">4.G1回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-新生代GC"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">1.新生代GC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-并发标记周期"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">2.并发标记周期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-混合回收："><span class="nav-number">1.4.0.3.</span> <span class="nav-text">3.混合回收：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

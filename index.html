@@ -250,6 +250,241 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/huishouqi/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxiaokun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="model">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/huishouqi/" itemprop="url">垃圾回收器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T12:30:30+08:00">
+                2018-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/huishouqi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/huishouqi/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h2><h3 id="1-串行回收器"><a href="#1-串行回收器" class="headerlink" title="1.串行回收器"></a>1.串行回收器</h3><p>串行回收器是指使用单线程进行垃圾回收的回收器，每次回收只有一个线程，专注性和独占性有更好的性能表现，可以在新生代和老年代使用，所以可以分为新生代串行回收器和老年代串行回收器</p>
+<h4 id="1-1新生代串行回收器"><a href="#1-1新生代串行回收器" class="headerlink" title="1.1新生代串行回收器"></a>1.1新生代串行回收器</h4><h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>单线程进行垃圾回收，独占式的垃圾回收。新生代串行回收器采用复制算法，实现简单，处理高兴，没有线程切换开销。在某些场景下超越并行回收器和并发回收器（比如单cpu等）</p>
+<p>当串行回收器进行垃圾回收，java中的所有线程都会暂停，所以实时性要求高的应用场景，不能被接收</p>
+<p>使用-XX:+UseSerialGC可以指定新生代串行回收器或者老年代串行回收器，当虚拟机在Client模式下，默认的垃圾回收器</p>
+<h4 id="1-2老年代串行回收器"><a href="#1-2老年代串行回收器" class="headerlink" title="1.2老年代串行回收器"></a>1.2老年代串行回收器</h4><h5 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h5><p>老年代串行回收器使用的标记压缩算法，也是一个串行独占的垃圾回收器，由于老年代垃圾回收时间一般比新生代要长，所以停顿时间也可以比较长</p>
+<p>-XX:+UseSerialGC：新生代和老年代都使用串行回收器</p>
+<p>-XX:+UseParNewGC：新生代使用ParNew回收器，老年代都使用串行回收器</p>
+<p>-XX:+UseParallelGC：新生代使用Parallel回收器，老年代都使用串行回收器</p>
+<h3 id="2-并行回收器"><a href="#2-并行回收器" class="headerlink" title="2.并行回收器"></a>2.并行回收器</h3><p>并行回收器在串行基础上做了改进，使用多个线程同时进行垃圾回收，对于并行能力较强的计算，可以有效缩短垃圾回收所需的实际时间</p>
+<h4 id="2-1新生代ParNew回收器"><a href="#2-1新生代ParNew回收器" class="headerlink" title="2.1新生代ParNew回收器"></a>2.1新生代ParNew回收器</h4><p>ParNew回收器是用于新生代垃圾回收，它只是简单地将串行回收器多线程化，回收策略，算法和参数和新生代串行回收器一样。ParNew也是一个独占式的回收器，所以应用程序会全部暂停，但是在并发能力较强的机器上，回收时间要短于串行回收器</p>
+<p>-XX:+UseConcMarkSweepGC：新生代使用ParNew回收器，老年代使用CMS</p>
+<p>-XX:ParallelGCThreads：ParNew回收器线程数量。</p>
+<h4 id="2-2新生代ParallelGC回收器"><a href="#2-2新生代ParallelGC回收器" class="headerlink" title="2.2新生代ParallelGC回收器"></a>2.2新生代ParallelGC回收器</h4><p>从表面上看和ParNew回收器一样，使用复制算法，多线程和独占式的收集器。它有一个很重要的特点就是关注系统的吞吐量。有两个重要的参数：</p>
+<p>-XX:MaxGCPauseMills:设置最大垃圾回收的停顿时间</p>
+<p>-XX:GCTimeRatio: 设置吞吐量的大小，默认值是99，就是1%(1/(1+99))的时间用于垃圾收集</p>
+<p>-XX:UseAdaptiveSizePolicy 是一种自适应的GC调节策略，在这种模式下，新生代的大小，end和survivior的比例，晋升老年代的对象年龄参数都会自动调整已达到堆大小，吞吐量和停顿之间的平衡点。</p>
+<p><strong>注意：</strong>-XX:MaxGCPauseMills和-XX:GCTimeRatio是两个互相矛盾的参数。</p>
+<h4 id="2-3老年代ParallelOldGC回收器"><a href="#2-3老年代ParallelOldGC回收器" class="headerlink" title="2.3老年代ParallelOldGC回收器"></a>2.3老年代ParallelOldGC回收器</h4><p>老年代ParallelOldGC回收器也是多线程并发的收集器，关注吞吐量的一个回收器。用的是比较压缩算法，其余参数和ParallelGC回收器类似，一个用于新生代一个用于老年代。</p>
+<h3 id="3-CMS回收器"><a href="#3-CMS回收器" class="headerlink" title="3.CMS回收器"></a>3.CMS回收器</h3><p>CMS是Concurrent Mark Sweep的缩写，意思是并发标记清除，它使用的标记清除算法，同时又是一个多线程并行回收的垃圾回收器。</p>
+<h4 id="回收步骤"><a href="#回收步骤" class="headerlink" title="回收步骤"></a>回收步骤</h4><ol>
+<li>初始标记：独占资源，标记跟对象</li>
+<li>并发标记：标记所有对象</li>
+<li>预清理：清理准备以及控制停顿时间</li>
+<li>重新标记：独占资源，修正并发标记对象</li>
+<li>并发清理：清理垃圾</li>
+<li>并发重置</li>
+</ol>
+<p>根据标记清除算法：初始标记，并发标记和重新标记都是标记清除的对象。并发清理则是正式回收垃圾对象，并发重置是在垃圾回收完成后，重新初始化cms数据结构和数据</p>
+<h4 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h4><p>-XX:+UseConcMarkSweepGC 启用cms垃圾回收器</p>
+<p>-XX:ConcMarkThreads 并发线程数</p>
+<p>-XX:+CMSInitiatingOccupancyFraction 内存空间使用阈值，默认68%，达到阈值时会进行垃圾回收</p>
+<p>-XX:+UseFullGCsBeforeCompaction:回收多少次后，进行内存压缩</p>
+<p>-XX:+UseCMSCompactAtFullCollection 使CMS垃圾回收之后进行内存碎片整理，注意内存碎片整理不是并发的</p>
+<h3 id="4-G1回收器"><a href="#4-G1回收器" class="headerlink" title="4.G1回收器"></a>4.G1回收器</h3><p>G1回收器是从jdk7开始正式使用的回收器，回收还是分年轻代和老年代。但是它使用分区算法，其特点如下：</p>
+<p><strong>并行性：</strong> 垃圾回收期间，可以多个GC线程同时进行</p>
+<p><strong>并发性：</strong>程序和GC交替进行，所以不会完全阻塞程序</p>
+<p><strong>分代GC：</strong>G1依然是一个分代回收器，兼顾年轻代和老年代。</p>
+<p><strong>空间整理：</strong>在回收过程中会进行适当的空间移动，有效的复制对象，减少空间碎片</p>
+<p><strong>可预见性：</strong>由于分区的原因，可以选择部分区域进行回收，所以全局停顿可以得到很好的控制</p>
+<p>注意：并行：程序会停顿，多线程同时进行，并发：程序和回收交替进行。</p>
+<p>G1的回收过程可能有4个阶段：</p>
+<p>新生代GC，并发标记周期，混合收集，可能会进行full GC</p>
+<h5 id="1-新生代GC"><a href="#1-新生代GC" class="headerlink" title="1.新生代GC"></a>1.新生代GC</h5><p>新生代GC是主要工作是回收eden区和survivor区，一旦eden区被占满，新生代GC就会启动。新生代GC只处理eden区和survivor区，回收之后所有eden区都应该被清空，survivor区清除一部分。还有一个变化就是年老代会增多</p>
+<h5 id="2-并发标记周期"><a href="#2-并发标记周期" class="headerlink" title="2.并发标记周期"></a>2.并发标记周期</h5><p>并发标记周期可以分为以下步骤：</p>
+<p><strong>初始标记：</strong>标记从根节点可以直接到达的对象，它伴随着一次新生代GC,会产生停顿，应用程序在这个线程中会停顿</p>
+<p><strong>根区域扫描：</strong>这个可以跟应用程序一起运行</p>
+<p><strong>并发标记：</strong>查找整个堆的存活对象，并做好标记</p>
+<p><strong>重新标记：</strong>并发过程中程序依然进行，结果可能需要修正，重新标记，对上次结果进行补充，为了加快标记速度，会创建一个快照。</p>
+<p><strong>独占清理：</strong>这个阶段会引起停顿，它计算各个区域存活对象和GC回收比例进行排序，识别可供回收的区域。会标记可以混合回收区域，混合回收阶段会需要这些信息</p>
+<p><strong>并发清理阶段：</strong>识别并清理完全空闲区域，并发清理，不会引起停顿</p>
+<h5 id="3-混合回收："><a href="#3-混合回收：" class="headerlink" title="3.混合回收："></a>3.混合回收：</h5><p>在并发标记周期中会回收一部分对象，但是总体来说还是比例相当低。在并发标记周期中已经知道哪些可以区域可以混合回收，这个阶段就是对这些区域进行回收。会优先回收垃圾比例比较高的区域因为这些区域性价比比较高。它会回收年轻大和老年代区域。</p>
+<p>4.必要时full GC</p>
+<p>并发收集和应用程序交替运行，这样就不能避免在特别繁忙的场合出现回收过程中内存不足情况。当遇到这种情况G1就会进行full GC</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://modelpi.com/scala导出Excel及所遇到的问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1062,7 +1297,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
