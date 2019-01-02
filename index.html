@@ -250,6 +250,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/letcode/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxiaokun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="model">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/letcode/" itemprop="url">leetCode--两数之和和两数相加</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T19:56:30+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/letcode/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/letcode/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <em>same</em>element twice.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>就是给定一个数，在列表中找到两个数的和是这个，把下标输出出来。最简单的方式就是用for循环，比如下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">numsLen = len(nums)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(numsLen):</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(i+<span class="number">1</span>,numsLen):</span><br><span class="line">        <span class="keyword">if</span> nums[i]+nums[k]==target:</span><br><span class="line">            list.append(i)</span><br><span class="line">            list.append(k)</span><br><span class="line">            <span class="keyword">return</span> list</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>这个最好理解的，就是for循环，从第一个开始循环，然后再循环剩下的数入，如果两个数加起来是目标数值，就返回。在一个从小到大有序的数组是非常快。但是如果这个数组中数值是无序就比较慢了（只能跑赢20%左右的python代码）。</p>
+<p>下面给出一个无序比较快的一段查找代码：<br>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">    <span class="keyword">if</span> target-value <span class="keyword">in</span> a:</span><br><span class="line">        <span class="keyword">return</span> [a[target-value],i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a[value] = i</span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>这个代码的思路，一次循环就能做出来，用了字典，key是数组的值，value是数组的下标。然后利用字典的查询特点快速找到值，取出下标(跑赢100%)。    </p>
+<h2 id="两个列表之和"><a href="#两个列表之和" class="headerlink" title="两个列表之和"></a>两个列表之和</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: (<span class="number">2</span> -&gt; <span class="number">4</span> -&gt; <span class="number">3</span>) + (<span class="number">5</span> -&gt; <span class="number">6</span> -&gt; <span class="number">4</span>)</span><br><span class="line">Output: <span class="number">7</span> -&gt; <span class="number">0</span> -&gt; <span class="number">8</span></span><br><span class="line">Explanation: <span class="number">342</span> + <span class="number">465</span> = <span class="number">807.</span></span><br></pre></td></tr></table></figure>
+<h4 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h4><p>就是把两个链表上的数值相加，最终得到一个链表的值。有点像竖式运算。所以就只能循环链表，把数值相加。注意，超过9的话会进1。简单的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line"> a=<span class="number">0</span></span><br><span class="line"> <span class="keyword">while</span> l1 <span class="keyword">or</span> l2 <span class="keyword">or</span> a != <span class="number">0</span>:</span><br><span class="line">     k = (l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span>) + (l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span>) + a</span><br><span class="line">     a = k / <span class="number">10</span></span><br><span class="line">     cur.next = ListNode(k % <span class="number">10</span>)</span><br><span class="line">     cur = cur.next</span><br><span class="line">     l1 = l1.next <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">     l2 = l2.next <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line"> <span class="keyword">return</span> result.next</span><br></pre></td></tr></table></figure>
+<p>这个里面就是有很多判断条件，只能跑赢40%左右的python代码，下面又做了一些改进</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line">      carry=<span class="number">0</span></span><br><span class="line">      a=<span class="number">0</span></span><br><span class="line">      <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">          k = l1.val+l2.val+carry</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">while</span> l1:</span><br><span class="line">          k = carry+l1.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">      <span class="keyword">while</span> l2:</span><br><span class="line">          k = carry+l2.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">if</span> carry!=<span class="number">0</span>:</span><br><span class="line">          cur.next=ListNode(carry)</span><br><span class="line">          cur = cur.next</span><br><span class="line">      <span class="keyword">return</span> root.next</span><br></pre></td></tr></table></figure>
+<p>这个代码比上一个代码只能提升一点点，怎么能跑赢超过一半的python代码，不知道大家有没有比较好的想法，可以交流一下</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://modelpi.com/excelcolor/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1484,7 +1685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1506,7 +1707,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1559,7 +1760,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-snowflake-o"></i>
   </span>

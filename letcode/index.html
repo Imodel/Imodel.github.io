@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="scala,poi,excel,">
+  <meta name="keywords" content="python,leetcode,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
-<meta name="keywords" content="scala,poi,excel">
+<meta name="description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+<meta name="keywords" content="python,leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scala利用poi导出Excel">
-<meta property="og:url" content="http://modelpi.com/scala导出Excel及所遇到的问题/index.html">
+<meta property="og:title" content="leetCode--两数之和和两数相加">
+<meta property="og:url" content="http://modelpi.com/letcode/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
+<meta property="og:description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-26T02:59:55.290Z">
+<meta property="og:updated_time" content="2019-01-02T11:56:57.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="scala利用poi导出Excel">
-<meta name="twitter:description" content="今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。 利用Apache poi包进行处理，用的是4.0.1，依赖包： 123456789101112131415 &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;">
+<meta name="twitter:title" content="leetCode--两数之和和两数相加">
+<meta name="twitter:description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/scala导出Excel及所遇到的问题/">
+  <link rel="canonical" href="http://modelpi.com/letcode/">
 
 
 
 
 
-  <title>scala利用poi导出Excel | model</title>
+  <title>leetCode--两数之和和两数相加 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/scala导出Excel及所遇到的问题/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/letcode/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">scala利用poi导出Excel</h1>
+          <h1 class="post-title" itemprop="name headline">leetCode--两数之和和两数相加</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-25T20:01:30+08:00">
-                2018-12-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T19:56:30+08:00">
+                2019-01-02
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/scala导出Excel及所遇到的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/scala导出Excel及所遇到的问题/" itemprop="commentCount"></span>
+                <a href="/letcode/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/letcode/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,16 +386,25 @@
       
 
       
-        <p>今天做了scala把数据库的数据按照需求导出Excel中，遇到一些问题和坑，记录下来遇到的大家分享。首先一个贴上一个粗糙的demo，大家可以借鉴一下。</p>
-<p>利用Apache poi包进行处理，用的是4.0.1，依赖包：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建file</span></span><br><span class="line">    <span class="keyword">val</span> file = <span class="keyword">new</span> <span class="type">File</span>(<span class="string">"/Users/xk/Desktop/a.xlsx"</span>)</span><br><span class="line">    <span class="comment">//val ps = new POIFSFileSystem(new BufferedInputStream(new FileInputStream("/Users/xk/Desktop/a.xlsx")))</span></span><br><span class="line">    <span class="comment">//判断file是否存在，不存在创建</span></span><br><span class="line">    <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        file.createNewFile()</span><br><span class="line">       <span class="comment">// WorkbookFactory.create(new FileInputStream("/Users/xk/Desktop/a.xlsx"))</span></span><br><span class="line">      &#125;<span class="keyword">catch</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> ex:<span class="type">IOException</span>=&gt;&#123;</span><br><span class="line">          println(<span class="string">"error"</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//excel处理Excel的类</span></span><br><span class="line">    <span class="keyword">val</span> hssf = <span class="keyword">new</span> <span class="type">XSSFWorkbook</span>()</span><br><span class="line">    <span class="comment">//创建一个工作簿</span></span><br><span class="line">    <span class="keyword">val</span> sheet = hssf.createSheet(<span class="string">"student"</span>)</span><br><span class="line">    <span class="comment">//创建第一行，一般都是的头部</span></span><br><span class="line">    <span class="keyword">val</span> firstRow = sheet.createRow(<span class="number">0</span>)</span><br><span class="line">    <span class="comment">//设置行头</span></span><br><span class="line">    <span class="keyword">val</span> heads = <span class="type">Array</span>[<span class="type">String</span>](<span class="string">"名字"</span>,<span class="string">"年龄"</span>,<span class="string">"班级"</span>)</span><br><span class="line">    <span class="comment">//设置头部</span></span><br><span class="line">    <span class="keyword">for</span>(i&lt;- <span class="number">0</span> until heads.length)&#123;</span><br><span class="line">      <span class="keyword">val</span> cell = firstRow.createCell(i)</span><br><span class="line">      cell.setCellValue(<span class="keyword">new</span> <span class="type">XSSFRichTextString</span>(heads(i)))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> rowlist = parkDF.collect().toList</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i &lt;- <span class="number">0</span> until rowlist.length)&#123;</span><br><span class="line">      <span class="keyword">val</span> erow = sheet.createRow(i+<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">val</span> xlsDot = rowlist(i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell = erow.createCell(<span class="number">0</span>)</span><br><span class="line">      sortCell.setCellValue(xlsDot.getString(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell1 = erow.createCell(<span class="number">1</span>)</span><br><span class="line">      sortCell1.setCellValue(xlsDot.getString(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> sortCell2 = erow.createCell(<span class="number">2</span>)</span><br><span class="line">      sortCell2.setCellValue(xlsDot.getString(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> out = <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"/Users/xk/Desktop/a.xlsx"</span>)</span><br><span class="line">    hssf.write(out)</span><br><span class="line">    out.close()</span><br><span class="line">    <span class="comment">//in.close()</span></span><br><span class="line">    hssf.close()</span><br></pre></td></tr></table></figure>
-<p>遇到的坑：</p>
-<p><code>org.apache.poi.poifs.filesystem.NotOLE2FileException</code></p>
-<p>之前用的HSSFWorkbook类处理Excel，发现这个类只处理2007版之前的Excel，可以看成后缀是<strong>xls</strong>的Excel文件，后缀为<strong>xlsx</strong>需要用XSSFWorkbook，这个类不在poi包，需要引用poi-ooxml和poi-ooxml-schemas包</p>
-<p><code>org.apache.poi.EmptyFileException: The supplied file was empty (zero bytes long)</code></p>
-<p>看到网上例子，创建XSSFWorkbook的时候，有用fileInputStream参数创建的。我就用了val hssf = new XSSFWorkbook(new FileInputStream(“/Users/g2/Desktop/a.xlsx”))的方式报错，结果一直报这个错误，去掉流的参数就可以了</p>
-<p>#### </p>
+        <h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <em>same</em>element twice.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>就是给定一个数，在列表中找到两个数的和是这个，把下标输出出来。最简单的方式就是用for循环，比如下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">numsLen = len(nums)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(numsLen):</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(i+<span class="number">1</span>,numsLen):</span><br><span class="line">        <span class="keyword">if</span> nums[i]+nums[k]==target:</span><br><span class="line">            list.append(i)</span><br><span class="line">            list.append(k)</span><br><span class="line">            <span class="keyword">return</span> list</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>这个最好理解的，就是for循环，从第一个开始循环，然后再循环剩下的数入，如果两个数加起来是目标数值，就返回。在一个从小到大有序的数组是非常快。但是如果这个数组中数值是无序就比较慢了（只能跑赢20%左右的python代码）。</p>
+<p>下面给出一个无序比较快的一段查找代码：<br>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">    <span class="keyword">if</span> target-value <span class="keyword">in</span> a:</span><br><span class="line">        <span class="keyword">return</span> [a[target-value],i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a[value] = i</span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>这个代码的思路，一次循环就能做出来，用了字典，key是数组的值，value是数组的下标。然后利用字典的查询特点快速找到值，取出下标(跑赢100%)。    </p>
+<h2 id="两个列表之和"><a href="#两个列表之和" class="headerlink" title="两个列表之和"></a>两个列表之和</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: (<span class="number">2</span> -&gt; <span class="number">4</span> -&gt; <span class="number">3</span>) + (<span class="number">5</span> -&gt; <span class="number">6</span> -&gt; <span class="number">4</span>)</span><br><span class="line">Output: <span class="number">7</span> -&gt; <span class="number">0</span> -&gt; <span class="number">8</span></span><br><span class="line">Explanation: <span class="number">342</span> + <span class="number">465</span> = <span class="number">807.</span></span><br></pre></td></tr></table></figure>
+<h4 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h4><p>就是把两个链表上的数值相加，最终得到一个链表的值。有点像竖式运算。所以就只能循环链表，把数值相加。注意，超过9的话会进1。简单的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line"> a=<span class="number">0</span></span><br><span class="line"> <span class="keyword">while</span> l1 <span class="keyword">or</span> l2 <span class="keyword">or</span> a != <span class="number">0</span>:</span><br><span class="line">     k = (l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span>) + (l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span>) + a</span><br><span class="line">     a = k / <span class="number">10</span></span><br><span class="line">     cur.next = ListNode(k % <span class="number">10</span>)</span><br><span class="line">     cur = cur.next</span><br><span class="line">     l1 = l1.next <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">     l2 = l2.next <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line"> <span class="keyword">return</span> result.next</span><br></pre></td></tr></table></figure>
+<p>这个里面就是有很多判断条件，只能跑赢40%左右的python代码，下面又做了一些改进</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line">      carry=<span class="number">0</span></span><br><span class="line">      a=<span class="number">0</span></span><br><span class="line">      <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">          k = l1.val+l2.val+carry</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">while</span> l1:</span><br><span class="line">          k = carry+l1.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">      <span class="keyword">while</span> l2:</span><br><span class="line">          k = carry+l2.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">if</span> carry!=<span class="number">0</span>:</span><br><span class="line">          cur.next=ListNode(carry)</span><br><span class="line">          cur = cur.next</span><br><span class="line">      <span class="keyword">return</span> root.next</span><br></pre></td></tr></table></figure>
+<p>这个代码比上一个代码只能提升一点点，怎么能跑赢超过一半的python代码，不知道大家有没有比较好的想法，可以交流一下</p>
 
       
     </div>
@@ -413,11 +422,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/scala/" rel="tag"># scala</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/poi/" rel="tag"># poi</a>
-          
-            <a href="/tags/excel/" rel="tag"># excel</a>
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
         </div>
       
@@ -430,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/垃圾回收算法/" rel="next" title="垃圾回收算法">
-                <i class="fa fa-chevron-left"></i> 垃圾回收算法
+              <a href="/excelcolor/" rel="next" title="scala利用poi给Excel添加颜色">
+                <i class="fa fa-chevron-left"></i> scala利用poi给Excel添加颜色
               </a>
             
           </div>
@@ -439,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/huishouqi/" rel="prev" title="垃圾回收器">
-                垃圾回收器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">1.</span> <span class="nav-text">代码：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两数之和"><span class="nav-number">1.</span> <span class="nav-text">两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目"><span class="nav-number">1.1.</span> <span class="nav-text">1.题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析："><span class="nav-number">1.1.1.</span> <span class="nav-text">分析：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个列表之和"><span class="nav-number">2.</span> <span class="nav-text">两个列表之和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-number">2.0.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析：-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">分析：</span></a></li></ol></li></ol></div>
             
 
           </div>
