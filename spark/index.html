@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="python,leetcode,">
+  <meta name="keywords" content="spark,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
-<meta name="keywords" content="python,leetcode">
+<meta name="description" content="jar包顺序因为在包中要使用http请求外部接口获取数据。而本身spark就自带http的请求的包。因为版本不一致，导致方法不一样或者某些方法没有而报错 解决方法 1--conf spark.driver.userClassPathFirst=true Detected implicit cartesian product for LEFT OUTER join问题先看代码 12spark.sql">
+<meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetCode--两数之和和两数相加">
-<meta property="og:url" content="http://modelpi.com/letcode/index.html">
+<meta property="og:title" content="spark的jar包加载和crossJoin的支持">
+<meta property="og:url" content="http://modelpi.com/spark/index.html">
 <meta property="og:site_name" content="model">
-<meta property="og:description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+<meta property="og:description" content="jar包顺序因为在包中要使用http请求外部接口获取数据。而本身spark就自带http的请求的包。因为版本不一致，导致方法不一样或者某些方法没有而报错 解决方法 1--conf spark.driver.userClassPathFirst=true Detected implicit cartesian product for LEFT OUTER join问题先看代码 12spark.sql">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-02T11:56:57.849Z">
+<meta property="og:updated_time" content="2019-02-20T06:36:17.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetCode--两数之和和两数相加">
-<meta name="twitter:description" content="两数之和1.题目Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use th">
+<meta name="twitter:title" content="spark的jar包加载和crossJoin的支持">
+<meta name="twitter:description" content="jar包顺序因为在包中要使用http请求外部接口获取数据。而本身spark就自带http的请求的包。因为版本不一致，导致方法不一样或者某些方法没有而报错 解决方法 1--conf spark.driver.userClassPathFirst=true Detected implicit cartesian product for LEFT OUTER join问题先看代码 12spark.sql">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://modelpi.com/letcode/">
+  <link rel="canonical" href="http://modelpi.com/spark/">
 
 
 
 
 
-  <title>leetCode--两数之和和两数相加 | model</title>
+  <title>spark的jar包加载和crossJoin的支持 | model</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://modelpi.com/letcode/">
+    <link itemprop="mainEntityOfPage" href="http://modelpi.com/spark/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxiaokun">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetCode--两数之和和两数相加</h1>
+          <h1 class="post-title" itemprop="name headline">spark的jar包加载和crossJoin的支持</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T19:56:30+08:00">
-                2019-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-10T12:56:30+08:00">
+                2019-02-10
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/letcode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/letcode/" itemprop="commentCount"></span>
+                <a href="/spark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/spark/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,25 +386,16 @@
       
 
       
-        <h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <em>same</em>element twice.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>就是给定一个数，在列表中找到两个数的和是这个，把下标输出出来。最简单的方式就是用for循环，比如下面的代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">numsLen = len(nums)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(numsLen):</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(i+<span class="number">1</span>,numsLen):</span><br><span class="line">        <span class="keyword">if</span> nums[i]+nums[k]==target:</span><br><span class="line">            list.append(i)</span><br><span class="line">            list.append(k)</span><br><span class="line">            <span class="keyword">return</span> list</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
-<p>这个最好理解的，就是for循环，从第一个开始循环，然后再循环剩下的数入，如果两个数加起来是目标数值，就返回。在一个从小到大有序的数组是非常快。但是如果这个数组中数值是无序就比较慢了（只能跑赢20%左右的python代码）。</p>
-<p>下面给出一个无序比较快的一段查找代码：<br>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i,value <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">    <span class="keyword">if</span> target-value <span class="keyword">in</span> a:</span><br><span class="line">        <span class="keyword">return</span> [a[target-value],i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a[value] = i</span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
-<p>这个代码的思路，一次循环就能做出来，用了字典，key是数组的值，value是数组的下标。然后利用字典的查询特点快速找到值，取出下标(跑赢100%)。    </p>
-<h2 id="两个列表之和"><a href="#两个列表之和" class="headerlink" title="两个列表之和"></a>两个列表之和</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: (<span class="number">2</span> -&gt; <span class="number">4</span> -&gt; <span class="number">3</span>) + (<span class="number">5</span> -&gt; <span class="number">6</span> -&gt; <span class="number">4</span>)</span><br><span class="line">Output: <span class="number">7</span> -&gt; <span class="number">0</span> -&gt; <span class="number">8</span></span><br><span class="line">Explanation: <span class="number">342</span> + <span class="number">465</span> = <span class="number">807.</span></span><br></pre></td></tr></table></figure>
-<h4 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h4><p>就是把两个链表上的数值相加，最终得到一个链表的值。有点像竖式运算。所以就只能循环链表，把数值相加。注意，超过9的话会进1。简单的代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line"> a=<span class="number">0</span></span><br><span class="line"> <span class="keyword">while</span> l1 <span class="keyword">or</span> l2 <span class="keyword">or</span> a != <span class="number">0</span>:</span><br><span class="line">     k = (l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span>) + (l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span>) + a</span><br><span class="line">     a = k / <span class="number">10</span></span><br><span class="line">     cur.next = ListNode(k % <span class="number">10</span>)</span><br><span class="line">     cur = cur.next</span><br><span class="line">     l1 = l1.next <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">     l2 = l2.next <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line"> <span class="keyword">return</span> result.next</span><br></pre></td></tr></table></figure>
-<p>这个里面就是有很多判断条件，只能跑赢40%左右的python代码，下面又做了一些改进</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cur = result =ListNode(<span class="number">0</span>)</span><br><span class="line">      carry=<span class="number">0</span></span><br><span class="line">      a=<span class="number">0</span></span><br><span class="line">      <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">          k = l1.val+l2.val+carry</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">while</span> l1:</span><br><span class="line">          k = carry+l1.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l1 = l1.next</span><br><span class="line">      <span class="keyword">while</span> l2:</span><br><span class="line">          k = carry+l2.val</span><br><span class="line">          carry=k//<span class="number">10</span></span><br><span class="line">          cur.next=ListNode(k%<span class="number">10</span>)</span><br><span class="line">          cur = cur.next</span><br><span class="line">          l2 = l2.next</span><br><span class="line">      <span class="keyword">if</span> carry!=<span class="number">0</span>:</span><br><span class="line">          cur.next=ListNode(carry)</span><br><span class="line">          cur = cur.next</span><br><span class="line">      <span class="keyword">return</span> root.next</span><br></pre></td></tr></table></figure>
-<p>这个代码比上一个代码只能提升一点点，怎么能跑赢超过一半的python代码，不知道大家有没有比较好的想法，可以交流一下</p>
+        <h2 id="jar包顺序"><a href="#jar包顺序" class="headerlink" title="jar包顺序"></a>jar包顺序</h2><p>因为在包中要使用http请求外部接口获取数据。而本身spark就自带http的请求的包。因为版本不一致，导致方法不一样或者某些方法没有而报错</p>
+<p><strong>解决方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--conf spark.driver.userClassPathFirst=true</span><br></pre></td></tr></table></figure>
+<h2 id="Detected-implicit-cartesian-product-for-LEFT-OUTER-join问题"><a href="#Detected-implicit-cartesian-product-for-LEFT-OUTER-join问题" class="headerlink" title="Detected implicit cartesian product for LEFT OUTER join问题"></a>Detected implicit cartesian product for LEFT OUTER join问题</h2><p>先看代码</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark.sql(<span class="string">"select count(1) as wnum from A"</span>).createOrReplaceTempView(<span class="string">"temp"</span>)</span><br><span class="line">spark.sql(<span class="string">"select wnum,1 as type from temp"</span>)</span><br></pre></td></tr></table></figure>
+<p>上面的代码第一句查询总数，第二段加一个type字段值为1，用于left join的判断条件</p>
+<p>然后这段代码产生的df会给别的df进行关联查询，就用报一个错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; org.apache.spark.sql.AnalysisException: Detected implicit cartesian product for LEFT OUTER join between logical plans</span><br><span class="line">Aggregate [count(1) AS wnum#429L, 1 AS type#432]</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark.conf.set(<span class="string">"spark.sql.crossJoin.enabled"</span>, <span class="string">"true"</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -422,9 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            <a href="/tags/spark/" rel="tag"># spark</a>
           
         </div>
       
@@ -437,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/excelcolor/" rel="next" title="scala利用poi给Excel添加颜色">
-                <i class="fa fa-chevron-left"></i> scala利用poi给Excel添加颜色
+              <a href="/letcode/" rel="next" title="leetCode--两数之和和两数相加">
+                <i class="fa fa-chevron-left"></i> leetCode--两数之和和两数相加
               </a>
             
           </div>
@@ -446,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/spark/" rel="prev" title="spark的jar包加载和crossJoin的支持">
-                spark的jar包加载和crossJoin的支持 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两数之和"><span class="nav-number">1.</span> <span class="nav-text">两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目"><span class="nav-number">1.1.</span> <span class="nav-text">1.题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析："><span class="nav-number">1.1.1.</span> <span class="nav-text">分析：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个列表之和"><span class="nav-number">2.</span> <span class="nav-text">两个列表之和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-number">2.0.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析：-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">分析：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jar包顺序"><span class="nav-number">1.</span> <span class="nav-text">jar包顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Detected-implicit-cartesian-product-for-LEFT-OUTER-join问题"><span class="nav-number">2.</span> <span class="nav-text">Detected implicit cartesian product for LEFT OUTER join问题</span></a></li></ol></div>
             
 
           </div>
